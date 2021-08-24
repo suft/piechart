@@ -1,11 +1,22 @@
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
 import App from './App'
+import {
+  defaultTheme,
+  ThemeProvider,
+  Preflight,
+} from '@xstyled/styled-components'
+
+const theme = {
+  ...defaultTheme,
+}
 
 ReactDOM.render(
   <StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <Preflight />
+      <App />
+    </ThemeProvider>
   </StrictMode>,
   document.getElementById('root')
 )
