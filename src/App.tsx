@@ -26,26 +26,18 @@ function App(): JSX.Element {
       {
         title: 'Category A',
         color: '#94a3b8',
-        track: 'blue-400',
-        accent: 'blue-200',
       },
       {
         title: 'Category B',
         color: '#fb923c',
-        track: 'orange-400',
-        accent: 'orange-200',
       },
       {
         title: 'Category C',
         color: '#4ade80',
-        track: 'green-400',
-        accent: 'green-200',
       },
       {
         title: 'Category D',
         color: '#a78bfa',
-        track: 'violet-400',
-        accent: 'violet-200',
       },
     ]
     const splits = splitAmount(100, initialCategories.length)

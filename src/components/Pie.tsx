@@ -6,8 +6,6 @@ type Category = {
   id: number
   title: string
   color: string
-  track: string
-  accent: string
   value: number
 }
 
@@ -31,7 +29,6 @@ const Pie = ({ data, handleSlider }: PieProps): JSX.Element => {
           value={item.value}
           title={item.title}
           color={item.color}
-          accent={item.accent}
           handleChange={handleSlider}
         />
       ))}

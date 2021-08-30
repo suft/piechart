@@ -9,7 +9,6 @@ type SliderProps = {
   value: number
   title: string
   color: string
-  accent: string
   handleChange: (id: number, value: number) => void
 }
 
@@ -18,7 +17,6 @@ const Slider = ({
   value,
   title,
   color,
-  accent,
   handleChange,
 }: SliderProps): JSX.Element => {
   const [values, setValues] = useState<number[]>([value])
@@ -43,7 +41,7 @@ const Slider = ({
         onChange={(values) => setValues(values)}
         onFinalChange={(values) => handleChange(id, values[0])}
         renderTrack={SliderTrack(color)}
-        renderThumb={SliderThumb(values[0], accent)}
+        renderThumb={SliderThumb(values[0])}
       />
       <x.p fontWeight="bold">{title}</x.p>
     </x.div>

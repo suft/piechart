@@ -7,7 +7,7 @@ type SliderThumbProps = {
 }
 
 const SliderThumb =
-  (value: number, accent: string) =>
+  (value: number) =>
   ({ props, isDragged }: SliderThumbProps): JSX.Element => {
     return (
       <x.div
@@ -34,7 +34,7 @@ const SliderThumb =
         >
           {value}
         </x.div>
-        <x.div w={2} h={4} bg={isDragged ? accent : 'gray-200'}></x.div>
+        <x.div w={2} h={4} bg={isDragged ? 'blue-200' : 'gray-200'}></x.div>
       </x.div>
     )
   }
