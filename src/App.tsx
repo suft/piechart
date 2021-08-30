@@ -6,32 +6,40 @@ function App(): JSX.Element {
   const [categories, setCategories] = useState([
     {
       id: 1,
-      value: 33,
-      title: 'First label',
+      value: 25,
+      title: 'Category A',
       color: '#94a3b8',
       track: 'blue-400',
       accent: 'blue-200',
     },
     {
       id: 2,
-      value: 33,
-      title: 'Second Label',
+      value: 25,
+      title: 'Category B',
       color: '#fb923c',
       track: 'orange-400',
       accent: 'orange-200',
     },
     {
       id: 3,
-      value: 34,
-      title: 'Third label,',
+      value: 25,
+      title: 'Category C',
       color: '#4ade80',
       track: 'green-400',
       accent: 'green-200',
     },
+    {
+      id: 4,
+      value: 25,
+      title: 'Category D',
+      color: '#a78bfa',
+      track: 'violet-400',
+      accent: 'violet-200',
+    },
   ])
 
   const handleCategories = (id: number, value: number): void => {
-    const others = splitAmount(100 - value, 2)
+    const others = splitAmount(100 - value, categories.length - 1)
     setCategories((prev) => {
       return prev.map((item) => ({
         ...item,
@@ -66,7 +74,7 @@ function App(): JSX.Element {
       flexDirection="column"
       alignItems="center"
       justifyContent="flex-start"
-      mt={6}
+      mt={5}
     >
       <Pie data={categories} handleSlider={handleCategories} />
     </x.div>

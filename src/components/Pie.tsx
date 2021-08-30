@@ -21,29 +21,9 @@ const Pie = ({ data, handleSlider }: PieProps): JSX.Element => {
   return (
     <x.div>
       <x.div display="flex" alignItems="center" justifyContent="center" gap={4}>
-        <x.div w={96} maxWidth={0.5}>
+        <x.div w={96} maxWidth={0.75}>
           <Chart data={data} lineWidth={60} />
         </x.div>
-        <x.ul
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          gap={4}
-        >
-          {data.map((item) => (
-            <x.li
-              key={item.id}
-              fontSize="lg"
-              fontWeight="bold"
-              textAlign="center"
-            >
-              <x.span color={item.track}>{item.title}</x.span>
-              <br />
-              <strong>{item.value}%</strong>
-            </x.li>
-          ))}
-        </x.ul>
       </x.div>
       {data.map((item) => (
         <Slider

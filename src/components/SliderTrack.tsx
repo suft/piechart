@@ -14,6 +14,7 @@ const SliderTrack =
         {...props}
         display="flex"
         w="sm"
+        maxWidth={0.8}
         h={2}
         borderRadius="full"
         bg={color}
