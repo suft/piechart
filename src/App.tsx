@@ -2,41 +2,60 @@ import { useState } from 'react'
 import { x } from '@xstyled/styled-components'
 import Pie from './components/Pie'
 
+const splitAmount = (amount: number, n: number): number[] => {
+  const parts = []
+  if (amount % n === 0) {
+    const p = amount / n
+    for (let i = 0; i < n; ++i) {
+      parts.push(p)
+    }
+  } else {
+    const zp = n - (amount % n)
+    const pp = Math.floor(amount / n)
+    for (let i = 0; i < n; ++i) {
+      if (i >= zp) parts.push(pp + 1)
+      else parts.push(pp)
+    }
+  }
+  return parts
+}
+
 function App(): JSX.Element {
-  const [categories, setCategories] = useState([
-    {
-      id: 1,
-      value: 25,
-      title: 'Category A',
-      color: '#94a3b8',
-      track: 'blue-400',
-      accent: 'blue-200',
-    },
-    {
-      id: 2,
-      value: 25,
-      title: 'Category B',
-      color: '#fb923c',
-      track: 'orange-400',
-      accent: 'orange-200',
-    },
-    {
-      id: 3,
-      value: 25,
-      title: 'Category C',
-      color: '#4ade80',
-      track: 'green-400',
-      accent: 'green-200',
-    },
-    {
-      id: 4,
-      value: 25,
-      title: 'Category D',
-      color: '#a78bfa',
-      track: 'violet-400',
-      accent: 'violet-200',
-    },
-  ])
+  const [categories, setCategories] = useState(() => {
+    const initialCategories = [
+      {
+        title: 'Category A',
+        color: '#94a3b8',
+        track: 'blue-400',
+        accent: 'blue-200',
+      },
+      {
+        title: 'Category B',
+        color: '#fb923c',
+        track: 'orange-400',
+        accent: 'orange-200',
+      },
+      {
+        title: 'Category C',
+        color: '#4ade80',
+        track: 'green-400',
+        accent: 'green-200',
+      },
+      {
+        title: 'Category D',
+        color: '#a78bfa',
+        track: 'violet-400',
+        accent: 'violet-200',
+      },
+    ]
+    const splits = splitAmount(100, initialCategories.length)
+
+    return initialCategories.map((item, index) => ({
+      ...item,
+      id: index,
+      value: splits[index],
+    }))
+  })
 
   const handleCategories = (id: number, value: number): void => {
     const others = splitAmount(100 - value, categories.length - 1)
@@ -46,24 +65,6 @@ function App(): JSX.Element {
         value: item.id === id ? value : others.pop() || 0,
       }))
     })
-  }
-
-  const splitAmount = (amount: number, n: number): number[] => {
-    const parts = []
-    if (amount % n === 0) {
-      const p = amount / n
-      for (let i = 0; i < n; ++i) {
-        parts.push(p)
-      }
-    } else {
-      const zp = n - (amount % n)
-      const pp = Math.floor(amount / n)
-      for (let i = 0; i < n; ++i) {
-        if (i >= zp) parts.push(pp + 1)
-        else parts.push(pp)
-      }
-    }
-    return parts
   }
 
   return (

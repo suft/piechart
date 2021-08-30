@@ -1,4 +1,3 @@
-// import { useState } from 'react'
 import { x } from '@xstyled/styled-components'
 import { PieChart as Chart } from 'react-minimal-pie-chart'
 import Slider from './Slider'
